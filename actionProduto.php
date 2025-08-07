@@ -40,12 +40,21 @@
                 //Validação do campo dataValidadeProduto
                 //Utiliza a função empty() para verificar se o campo está vazio
                 if(empty($_POST["dataValidadeProduto"])){
-                    echo "<div class='alert alert-warning text-center'>O campo <strong>DATA DE VALIDADE</strong> é obrigatório!</div>";
+                    echo "<div class='alert alert-warning text-center'>O campo <strong>DATA DE VALIDADE </strong> é obrigatório!</div>";
                     $erroPreenchimento = true;
                 }
                 else{
                     //Armazena valor do formulário na variável
                     $dataValidadeProduto = filtrar_entrada($_POST["dataValidadeProduto"]);
+
+                    //Aplicar a função strlen() para verificar o comprimento da string da dataValidadeProduto
+                    if(strlen($dataValidadeProduto) == 10){
+
+                        //Aplicar a função substr() para gerar substrings para armazenar dia, mês e ano da validade do produto
+                        $diaValidadeProduto = substr($dataValidadeProduto, 8, 2);
+                        $mesValidadeProduto = substr($dataValidadeProduto, 5, 2);
+                        $anoValidadeProduto = substr($dataValidadeProduto, 0, 4);
+                    }
                 }
 
                 //Início da validação da foto do produto
