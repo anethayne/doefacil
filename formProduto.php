@@ -26,8 +26,22 @@
                         <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-floating mt-3 mb-3">
-                        <input type="text" class="form-control" id="valorProduto" placeholder="Valor do Produto" name="valorProduto" required>
-                        <label for="valorProduto">Valor do Produto (R$):</label>
+                        <input type="text" class="form-control" id="dataValidadeProduto" placeholder="Data de Validade do Produto" name="dataValidadeProduto" required>
+                        <label for="dataValidadeProduto">Data de Validade do Produto:</label>
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="form-floating mt-3 mb-3">
+                        <input type="text" class="form-control" id="categoriaProduto" placeholder="Categoria do Produto" name="categoriaProduto" required>
+                            <select class="form-select" id="categoriaProduto" name="categoriaProduto" required>
+                                <option value="curiuva">Curiúva</option>
+                                <option value="imbau">Imbaú</option>
+                                <option value="ortigueira">Ortigueira</option>
+                                <option value="reserva">Reserva</option>
+                                <option value="telemacoBorba" selected>Telêmaco Borba</option>
+                                <option value="tibagi">Tibagi</option>
+                            </select>
+                        <label for= "categoriaProduto">Categoria do Produto:</label>
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback"></div>
                     </div>
