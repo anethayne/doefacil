@@ -56,6 +56,16 @@
                         $anoValidadeProduto = substr($dataValidadeProduto, 0, 4);
                     }
                 }
+                //Validação do campo categoriaProduto
+                //Utiliza a função empty() para verificar se o campo está vazio
+                if(empty($_POST["categoriaProduto"])){
+                    echo "<div class='alert alert-warning text-center'>O campo <strong>CATEGORIA</strong> é obrigatório!</div>";
+                    $erroPreenchimento = true;
+                }
+                else{
+                    //Armazena valor do formulário na variável
+                    $categoriaProduto = filtrar_entrada($_POST["categoriaProduto"]);
+                }
 
                 //Início da validação da foto do produto
                 $diretorio    = "img/"; //Define para qual diretório as imagens serão movidas
