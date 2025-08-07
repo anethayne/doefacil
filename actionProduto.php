@@ -8,10 +8,12 @@
             //Verifica o método de requisição do servidor
             if($_SERVER["REQUEST_METHOD"] == "POST"){
                 //Bloco para declaração de variáveis
-                $fotoProduto = $nomeProduto = $descricaoProduto = $valorProduto = "";
+                $fotoProduto = $nomeProduto = $descricaoProduto = $categoriasProduto = $dataValidadeProduto = $quantidadeProduto = "";
 
                 //Variável booleana para controle de erros de preenchimento
                 $erroPreenchimento = false;
+
+                
 
                 //Validação do campo nomeProduto
                 //Utiliza a função empty() para verificar se o campo está vazio
