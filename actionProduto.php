@@ -8,7 +8,7 @@
             //Verifica o método de requisição do servidor
             if($_SERVER["REQUEST_METHOD"] == "POST"){
                 //Bloco para declaração de variáveis
-                $fotoProduto = $nomeProduto = $descricaoProduto = $categoriasProduto = $dataValidadeProduto = $quantidadeProduto = "";
+                $fotoProduto = $nomeProduto = $descricaoProduto = $categoriaProduto = $dataValidadeProduto = $quantidadeProduto = "";
 
                 //Variável booleana para controle de erros de preenchimento
                 $erroPreenchimento = false;
@@ -39,7 +39,7 @@
 
                 //Validação do campo dataValidadeProduto
                 //Utiliza a função empty() para verificar se o campo está vazio
-                if(empty($_POST["dataValidaddeProduto"])){
+                if(empty($_POST["dataValidadeProduto"])){
                     echo "<div class='alert alert-warning text-center'>O campo <strong>DATA DE VALIDADE</strong> é obrigatório!</div>";
                     $erroPreenchimento = true;
                 }
