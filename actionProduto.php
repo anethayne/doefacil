@@ -39,13 +39,37 @@
 
                 //Validação do campo dataValidadeProduto
                 //Utiliza a função empty() para verificar se o campo está vazio
+<<<<<<< HEAD
                 if(empty($_POST["dataValidaddeProduto"])){
                     echo "<div class='alert alert-warning text-center'>O campo <strong>DATA DE VALIDADE</strong> é obrigatório!</div>";
+=======
+                if(empty($_POST["dataValidadeProduto"])){
+                    echo "<div class='alert alert-warning text-center'>O campo <strong>DATA DE VALIDADE </strong> é obrigatório!</div>";
+>>>>>>> 093c5d648688767a09f77d25fbd134ca2401959f
                     $erroPreenchimento = true;
                 }
                 else{
                     //Armazena valor do formulário na variável
                     $dataValidadeProduto = filtrar_entrada($_POST["dataValidadeProduto"]);
+
+                    //Aplicar a função strlen() para verificar o comprimento da string da dataValidadeProduto
+                    if(strlen($dataValidadeProduto) == 10){
+
+                        //Aplicar a função substr() para gerar substrings para armazenar dia, mês e ano da validade do produto
+                        $diaValidadeProduto = substr($dataValidadeProduto, 8, 2);
+                        $mesValidadeProduto = substr($dataValidadeProduto, 5, 2);
+                        $anoValidadeProduto = substr($dataValidadeProduto, 0, 4);
+                    }
+                }
+                //Validação do campo categoriaProduto
+                //Utiliza a função empty() para verificar se o campo está vazio
+                if(empty($_POST["categoriaProduto"])){
+                    echo "<div class='alert alert-warning text-center'>O campo <strong>CATEGORIA</strong> é obrigatório!</div>";
+                    $erroPreenchimento = true;
+                }
+                else{
+                    //Armazena valor do formulário na variável
+                    $categoriaProduto = filtrar_entrada($_POST["categoriaProduto"]);
                 }
 
                 //Início da validação da foto do produto
@@ -109,10 +133,15 @@
                                         <td>$descricaoProduto</td>
                                     </tr>
                                     <tr>
-                                        <th>VALOR DO PRODUTO</th>
-                                        <td>$valorProduto</td>
+                                        <th>DATA DE VALIDADE DO PRODUTO</th>
+                                        <td>$dataValidadeProduto</td>
                                     </tr>
-                                </table>
+                                    <tr>
+                                        <th>CATEGORIA DO PRODUTO</th>
+                                        <td>$categoriaProduto</td>
+                                    </tr>
+                                    
+                                    </table>
                             </div>
                         ";
                         mysqli_close($conn); //Essa função encerra a conexão com o Banco de Dados
