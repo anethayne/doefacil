@@ -15,13 +15,13 @@
                     </div>
                     <div class="form-floating mb-3 mt-3">
                         <input type="text" class="form-control" id="nomeProduto" placeholder="Nome" name="nomeProduto" required>
-                        <label for="nomeProduto">Nome do Produto</label>
+                        <label for="nomeProduto">Nome do Produto: </label>
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-floating mb-3 mt-3">
                         <textarea class="form-control" id="descricaoProduto" placeholder="Informe uma breve descrição sobre o Produto" name="descricaoProduto" required></textarea>
-                        <label for="nomeProduto">Descrição do Produto</label>
+                        <label for="nomeProduto">Descrição do Produto: </label>
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback"></div>
                     </div>
@@ -43,6 +43,13 @@
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback"></div>
                     </div>
+                    <div class="form-floating mt-3 mb-3">
+                        <input type="text" class="form-control" id="quantidadeProduto" placeholder="Quantidade do Produto" name="quantidadeProduto" required>
+                        <label for="quantidadeProduto">Quantidade do Produto:</label>
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback"></div>
+                    </div>
+
                     <button type="submit" class="btn btn-success">Cadastrar Produto</button>
                 </form>
             </div>
