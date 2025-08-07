@@ -63,7 +63,7 @@
 
                 //Validação do campo cidadeUsuario
                 //Utiliza a função empty() para verificar se o campo está vazio
-                if(empty($_POST["cidadeUsuario"])){
+                if(empty($_POST["enderecoUsuario"])){
                     echo "<div class='alert alert-warning text-center'>O campo <strong>CIDADE</strong> é obrigatório!</div>";
                     $erroPreenchimento = true;
                 }
@@ -158,7 +158,7 @@
                 if(!$erroPreenchimento && !$erroUpload){
 
                     //Cria uma variável para armazenar a QUERY para realizar a inserção dos dados do Usuário na tabela Usuarios
-                    $inserirUsuario = "INSERT INTO Usuarios (fotoUsuario, nomeUsuario, dataNascimentoUsuario, cidadeUsuario, telefoneUsuario, emailUsuario, senhaUsuario, tipoUsuario) VALUES ('$fotoUsuario', '$nomeUsuario', '$dataNascimentoUsuario', '$cidadeUsuario', '$telefoneUsuario', '$emailUsuario', '$senhaUsuario', 'cliente')";
+                    $inserirUsuario = "INSERT INTO Usuarios (emailUsuario, senhaUsuario, telefoneUsuario, enderecoUsuario, nomeUsuario, dataNascimentoUsuario, cpfUsuario, tipoUsuario) VALUES ('$emailUsuario', '$senhaUsuario', '$telefoneUsuario', '$enderecoUsuario', '$nomeUsuario', '$dataNascimentoUsuario', '$cpfUsuario', 'cliente')";
 
                     //Inclui o arquivo de conexão com o Banco de Dados
                     include("conexaoBD.php");
@@ -183,7 +183,7 @@
                                     </tr>
                                     <tr>
                                         <th>CIDADE</th>
-                                        <td>$cidadeUsuario</td>
+                                        <td>$enderecoUsuario</td>
                                     </tr>
                                     <tr>
                                         <th>TELEFONE</th>

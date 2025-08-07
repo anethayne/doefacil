@@ -28,7 +28,7 @@
                         <th>FOTO</th>
                         <th>NOME</th>
                         <th>DESCRIÇÃO</th>
-                        <th>VALOR</th>
+                        <th>VALIDADE</th>
                         <th>STATUS</th>
                     </tr>
                 </thead>
@@ -42,7 +42,7 @@
             $fotoProduto = $registro['fotoProduto'];
             $nomeProduto = $registro['nomeProduto'];
             $descricaoProduto = $registro['descricaoProduto'];
-            $valorProduto = $registro['valorProduto'];
+            $validadeProduto = $registro['validadeProduto'];
             $statusProduto = $registro['statusProduto'];
 
             //Exibe os valores armazenados pelas variáveis
@@ -52,7 +52,7 @@
                     <td><img src = '$fotoProduto' title = 'Foto de $nomeProduto' style = 'width:70px'></td>
                     <td>$nomeProduto</td>
                     <td>$descricaoProduto</td>
-                    <td>$valorProduto</td>
+                    <td>$validadeProduto</td>
                     <td>$statusProduto</td>
                 </tr>
             ";
