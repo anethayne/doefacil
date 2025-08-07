@@ -128,10 +128,15 @@
                                         <td>$descricaoProduto</td>
                                     </tr>
                                     <tr>
-                                        <th>VALOR DO PRODUTO</th>
-                                        <td>$valorProduto</td>
+                                        <th>DATA DE VALIDADE DO PRODUTO</th>
+                                        <td>$dataValidadeProduto</td>
                                     </tr>
-                                </table>
+                                    <tr>
+                                        <th>CATEGORIA DO PRODUTO</th>
+                                        <td>$categoriaProduto</td>
+                                    </tr>
+                                    
+                                    </table>
                             </div>
                         ";
                         mysqli_close($conn); //Essa função encerra a conexão com o Banco de Dados
