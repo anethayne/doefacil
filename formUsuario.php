@@ -14,6 +14,14 @@
                         <div class="invalid-feedback"></div>
                     </div>
 
+                    
+                    <div class="form-floating mb-3 mt-3">
+                        <input type="text" class="form-control" id="cpfUsuario" placeholder="CPF" name="cpfUsuario" required>
+                        <label for="cpfUsuario">CPF</label>
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback"></div>
+                    </div>
+
                     <div class="form-floating mb-3 mt-3">
                         <input type="text" class="form-control" id="nomeUsuario" placeholder="Nome" name="nomeUsuario" required>
                         <label for="nomeUsuario">Nome Completo</label>
@@ -27,7 +35,6 @@
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback"></div>
                     </div>
-                    
                     <div class="form-floating mb-3 mt-3">
                         <input type="text" class="form-control" id="telefoneUsuario" placeholder="Telefone" name="telefoneUsuario" required>
                         <label for="telefoneUsuario">Telefone</label>
@@ -41,7 +48,7 @@
                         <div class="invalid-feedback"></div>
                     </div>
                      <div class="form-floating mt-3 mb-3">
-                        <input type="text" class="form-control" id="senhaUsuario" placeholder="Endereco" name="enderecoUsuario" required>
+                        <input type="text" class="form-control" id="enderecoUsuario" placeholder="Endereco" name="enderecoUsuario" required>
                         <label for="enderecoUsuario">Endereço</label>
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback"></div>

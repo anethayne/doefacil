@@ -13,6 +13,19 @@
                 //Variável booleana para controle de erros de preenchimento
                 $erroPreenchimento = false;
 
+                       //Validação do campo nomeUsuario
+                //Utiliza a função empty() para verificar se o campo está vazio
+                if(empty($_POST["cpfUsuario"])){
+                    echo "<div class='alert alert-warning text-center'>O campo <strong>CPF</strong> é obrigatório!</div>";
+                    $erroPreenchimento = true;
+                }
+                else{
+                    //Armazena valor do formulário na variável
+                    $cpfUsuario = filtrar_entrada($_POST["cpfUsuario"]);
+
+                }
+
+
                 //Validação do campo nomeUsuario
                 //Utiliza a função empty() para verificar se o campo está vazio
                 if(empty($_POST["nomeUsuario"])){
@@ -69,7 +82,7 @@
                 }
                 else{
                     //Armazena valor do formulário na variável
-                    $cidadeUsuario = filtrar_entrada($_POST["cidadeUsuario"]);
+                    $enderecoUsuario = filtrar_entrada($_POST["enderecoUsuario"]);
                 }
 
                 //Validação do campo telefoneUsuario
@@ -158,7 +171,7 @@
                 if(!$erroPreenchimento && !$erroUpload){
 
                     //Cria uma variável para armazenar a QUERY para realizar a inserção dos dados do Usuário na tabela Usuarios
-                    $inserirUsuario = "INSERT INTO Usuarios (emailUsuario, senhaUsuario, telefoneUsuario, enderecoUsuario, nomeUsuario, dataNascimentoUsuario, cpfUsuario, tipoUsuario) VALUES ('$emailUsuario', '$senhaUsuario', '$telefoneUsuario', '$enderecoUsuario', '$nomeUsuario', '$dataNascimentoUsuario', '$cpfUsuario', 'cliente')";
+                    $inserirUsuario = "INSERT INTO usuario (url, email, senha, telefone, endereco, nome, data_nascimento, cpf) VALUES ('$fotoUsuario', '$emailUsuario', '$senhaUsuario', '$telefoneUsuario', '$enderecoUsuario', '$nomeUsuario', '$dataNascimentoUsuario', '$cpfUsuario')";
 
                     //Inclui o arquivo de conexão com o Banco de Dados
                     include("conexaoBD.php");
