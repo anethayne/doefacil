@@ -26,7 +26,7 @@
                         <div class="invalid-feedback"></div>
                     </div>
                    <div class="form-floating mb-3 mt-3">
-                        <input type="date" class="form-control" id="dataValidadeProduto" placeholder="Data de Validade do Produto" name="dataValidadeProdutoo" required>
+                        <input type="date" class="form-control" id="dataValidadeProduto" placeholder="Data de Validade do Produto" name="dataValidadeProduto" required>
                         <label for="dataValidadeProduto">Data de Validade do Produto</label>
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback"></div>
