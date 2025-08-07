@@ -29,20 +29,6 @@
                     </div>
                     
                     <div class="form-floating mb-3 mt-3">
-                        <select class="form-select" id="cidadeUsuario" name="cidadeUsuario" required>
-                            <option value="curiuva">Curiúva</option>
-                            <option value="imbau">Imbaú</option>
-                            <option value="ortigueira">Ortigueira</option>
-                            <option value="reserva">Reserva</option>
-                            <option value="telemacoBorba" selected>Telêmaco Borba</option>
-                            <option value="tibagi">Tibagi</option>
-                        </select>
-                        <label for="cidadeUsuario">Cidade</label>
-                        <div class="valid-feedback"></div>
-                        <div class="invalid-feedback"></div>
-                    </div>
-
-                    <div class="form-floating mb-3 mt-3">
                         <input type="text" class="form-control" id="telefoneUsuario" placeholder="Telefone" name="telefoneUsuario" required>
                         <label for="telefoneUsuario">Telefone</label>
                         <div class="valid-feedback"></div>
@@ -51,6 +37,12 @@
                     <div class="form-floating mb-3 mt-3">
                         <input type="email" class="form-control" id="emailUsuario" placeholder="Email" name="emailUsuario" required>
                         <label for="emailUsuario">Email</label>
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                     <div class="form-floating mt-3 mb-3">
+                        <input type="text" class="form-control" id="senhaUsuario" placeholder="Endereco" name="enderecoUsuario" required>
+                        <label for="enderecoUsuario">Endereço</label>
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback"></div>
                     </div>
