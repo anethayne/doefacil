@@ -32,7 +32,6 @@
                         <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-floating mt-3 mb-3">
-                        <input type="text" class="form-control" id="categoriaProduto" placeholder="Categoria do Produto" name="categoriaProduto" required>
                             <select class="form-select" id="categoriaProduto" name="categoriaProduto" required>
                                 <option value="curiuva">Curiúva</option>
                                 <option value="imbau">Imbaú</option>
