@@ -26,7 +26,7 @@
         <!-- Container para abrigar o Logotipo -->
         <div class="container-fluid text-center p-3" style="background-color: #fefce3;">
             <a href="index.php" title="Retornar para a página inicial">
-                <img src="img/logoDOEFACIL.jpg" style="width:150px;">
+                <img src="img/doefacil.jpg" style="width:150px;">
             </a>
         </div>
 
