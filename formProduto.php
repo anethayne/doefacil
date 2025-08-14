@@ -45,13 +45,13 @@
                     </div>
                     <div class="form-floating mt-3 mb-3">
                             <select class="form-select" id="categoriaProduto" name="categoriaProduto" required>
-                                <option value="doces">Doces</option>
-                                <option value="bebidas">Bebidas</option>
-                                <option value="frutas">Frutas</option>
-                                <option value="verduras">Verduras</option>
-                                <option value="saldados" selected>Salgados</option>
+                                <option value="kg">Quilogramas (KG)</option>
+                                <option value="ml">Mililitros (ml)</option>
+                                <option value="litros">Litros (L)</option>
+                                <option value="gramas">Gramas (g)</option>
+                                <option value="nenhuma" selected>Nenhuma</option>
                             </select>
-                        <label for= "categoriaProduto">Categoria do Produto:</label>
+                        <label for= "categoriaProduto">Unidade de medida:</label>
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback"></div>
                     </div>
