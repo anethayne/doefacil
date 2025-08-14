@@ -37,6 +37,7 @@
         </script>
 
     </head>
+
     <body>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -60,6 +61,7 @@
                                 <li><a class="dropdown-item" href="#!">Popular Items</a></li>
                                 <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
                             </ul>
+
                         </li>
                         -->
                     </ul>
