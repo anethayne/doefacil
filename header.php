@@ -21,10 +21,10 @@
 
 
     </head>
-    <body>
+    <body  style="background-color: #fefce3;">
         
         <!-- Container para abrigar o Logotipo -->
-        <div class="container-fluid text-center p-3">
+        <div class="container-fluid text-center p-3" style="background-color: #fefce3;">
             <a href="index.php" title="Retornar para a página inicial">
                 <img src="img/logoDOEFACIL.jpg" style="width:150px;">
             </a>
@@ -47,7 +47,7 @@
 
 
         <!-- Barra de Navegação do Sistema -->
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+        <nav class="navbar navbar-expand-sm navbar-dark sticky-top" style="background-color: #DA2A26;">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                     <span class="navbar-toggler-icon"></span>
