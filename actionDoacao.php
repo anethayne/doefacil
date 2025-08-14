@@ -67,16 +67,6 @@
                     $cidade = filtrar_entrada($_POST["cidade"]);
                 }
 
-                //Validação do campo bairro
-                //Utiliza a função empty() para verificar se o campo está vazio
-                if(empty($_POST["bairro"])){
-                    echo "<div class='alert alert-warning text-center'>O campo <strong>BAIRRO</strong> é obrigatório!</div>";
-                    $erroPreenchimento = true;
-                }
-                else{
-                    //Armazena valor do formulário na variável
-                    $bairro = filtrar_entrada($_POST["bairro"]);
-                }
 
                 //Validação do campo estado
                 //Utiliza a função empty() para verificar se o campo está vazio
@@ -90,13 +80,45 @@
                 }
 
 
+                //Validação do campo bairro
+                //Utiliza a função empty() para verificar se o campo está vazio
+                if(empty($_POST["bairro"])){
+                    echo "<div class='alert alert-warning text-center'>O campo <strong>BAIRRO</strong> é obrigatório!</div>";
+                    $erroPreenchimento = true;
+                }
+                else{
+                    //Armazena valor do formulário na variável
+                    $bairro = filtrar_entrada($_POST["bairro"]);
+                }
+
+                //Validação do campo rua
+                //Utiliza a função empty() para verificar se o campo está vazio
+                if(empty($_POST["rua"])){
+                    echo "<div class='alert alert-warning text-center'>O campo <strong>RUA</strong> é obrigatório!</div>";
+                    $erroPreenchimento = true;
+                }
+                else{
+                    //Armazena valor do formulário na variável
+                    $rua = filtrar_entrada($_POST["rua"]);
+                }
+                
+                //Validação do campo numeroEstabelecimento
+                //Utiliza a função empty() para verificar se o campo está vazio
+                if(empty($_POST["numeroEstabelecimento"])){
+                    echo "<div class='alert alert-warning text-center'>O campo <strong>NÚMERO DO ESTABELECIMENTO</strong> é obrigatório!</div>";
+                    $erroPreenchimento = true;
+                }
+                else{
+                    //Armazena valor do formulário na variável
+                    $numeroEstabelecimento = filtrar_entrada($_POST["numeroEstabelecimento"]);
+                }
 
 
                 //Se não houver erro de preenchimento, exibe alerta de sucesso e uma tabela com os dados informados
                 if(!$erroPreenchimento && !$erroUpload){
 
-                    //Cria uma variável para armazenar a QUERY para realizar a inserção dos dados do produto na tabela Produtos
-                    $inserirProduto = "INSERT INTO Produtos (url, nome, descricao, categorias, data_validade, quantidade) VALUES ('$url', '$nome', '$descricao', '$categoria', '$dataValidade', '$quantidade')";
+                    //Cria uma variável para armazenar a QUERY para realizar a inserção dos dados do produto na tabela doacao
+                    $inserirProduto = "INSERT INTO doacao (data, estado, cidade, rua, bairro, numero_estabelecimento) VALUES ('$data', '$estado', '$cidade', '$rua', '$bairro', '$numeroEstabelecimento')";
 
                     //Inclui o arquivo de conexão com o Banco de Dados
                     include("conexaoBD.php");
@@ -107,33 +129,36 @@
                         echo "<div class='alert alert-success text-center'><strong>Produto</strong> cadastrado(a) com sucesso!</div>";
                         echo "
                             <div class='container mt-3'>
-                                <div class='container mt-3 text-center'>
-                                    <img src='$url' style='width:150px;' title='Foto de $nome'>
-                                </div>
                                 <table class='table'>
                                     <tr>
-                                        <th>NOME</th>
-                                        <td>$nome</td>
+                                        <th>DATA</th>
+                                        <td>$data</td>
                                     </tr>
                                     <tr>
-                                        <th>DESCRIÇÃO DO PRODUTO</th>
-                                        <td>$descricao</td>
+                                        <th>ESTADO</th>
+                                        <td>$estado</td>
                                     </tr>
                                     <tr>
-                                        <th>DATA DE VALIDADE DO PRODUTO</th>
-                                        <td>$dataValidade</td>
+                                        <th>RUA</th>
+                                        <td>$rua</td>
                                     </tr>
                                     <tr>
-                                        <th>CATEGORIA DO PRODUTO</th>
-                                        <td>$categoria</td>
+                                        <th>BAIRRO</th>
+                                        <td>$bairro</td>
                                     </tr>
                                     <tr>
-                                        <th>QUANTIDADE DO PRODUTO</th>
-                                        <td>$quantidade</td>
+                                        <th>CIDADE</th>
+                                        <td>$cidade</td>
                                     </tr>
-                                    
-                                    
-                                    </table>
+                                    <tr>
+                                        <th>CIDADE</th>
+                                        <td>$cidade</td>
+                                    </tr>
+                                    <tr>
+                                        <th>NUMERO DO ESTABELECIMENTO</th>
+                                        <td>$numeroEstabelecimento</td>
+                                    </tr>
+                                </table>
                             </div>
                         ";
                         mysqli_close($conn); //Essa função encerra a conexão com o Banco de Dados
