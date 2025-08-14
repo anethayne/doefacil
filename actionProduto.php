@@ -8,7 +8,7 @@
             //Verifica o método de requisição do servidor
             if($_SERVER["REQUEST_METHOD"] == "POST"){
                 //Bloco para declaração de variáveis
-                $fotoProduto = $nomeProduto = $descricaoProduto = $categoriasProduto = $dataValidadeProduto = $quantidadeProduto = "";
+                $fotoProduto = $nomeProduto = $descricaoProduto = $categoriaProduto = $dataValidadeProduto = $quantidadeProduto = "";
 
                 //Variável booleana para controle de erros de preenchimento
                 $erroPreenchimento = false;
@@ -17,7 +17,7 @@
 
                 //Validação do campo nome
                 //Utiliza a função empty() para verificar se o campo está vazio
-                if(empty($_POST["nome"])){
+                if(empty($_POST["nomeProduto"])){
                     echo "<div class='alert alert-warning text-center'>O campo <strong>NOME</strong> é obrigatório!</div>";
                     $erroPreenchimento = true;
                 }
@@ -28,49 +28,58 @@
 
                 //Validação do campo descricao
                 //Utiliza a função empty() para verificar se o campo está vazio
-                if(empty($_POST["descricao"])){
+                if(empty($_POST["descricaoProduto"])){
                     echo "<div class='alert alert-warning text-center'>O campo <strong>DESCRIÇÃO</strong> é obrigatório!</div>";
                     $erroPreenchimento = true;
                 }
                 else{
                     //Armazena valor do formulário na variável
-                    $descricao = filtrar_entrada($_POST["descricao"]);
+                    $descricaoProduto = filtrar_entrada($_POST["descricaoProduto"]);
                 }
 
                 //Validação do campo dataValidade
                 //Utiliza a função empty() para verificar se o campo está vazio
-                if(empty($_POST["dataValidade"])){
+                if(empty($_POST["dataValidadeProduto"])){
                     echo "<div class='alert alert-warning text-center'>O campo <strong>DATA DE VALIDADE</strong> é obrigatório!</div>";
                     $erroPreenchimento = true;
                 }
                 else{
                     //Armazena valor do formulário na variável
-                    $dataValidade = filtrar_entrada($_POST["dataValidade"]);
+                    $dataValidadeProduto = filtrar_entrada($_POST["dataValidadeProduto"]);
 
                     //Aplicar a função strlen() para verificar o comprimento da string da dataValidade
-                    if(strlen($dataValidade) == 10){
+                    if(strlen($dataValidadeProduto) == 10){
 
                         //Aplicar a função substr() para gerar substrings para armazenar dia, mês e ano da validade do produto
-                        $diaValidadeProduto = substr($dataValidade, 8, 2);
-                        $mesValidadeProduto = substr($dataValidade, 5, 2);
-                        $anoValidadeProduto = substr($dataValidade, 0, 4);
+                        $diaValidadeProduto = substr($dataValidadeProduto, 8, 2);
+                        $mesValidadeProduto = substr($dataValidadeProduto, 5, 2);
+                        $anoValidadeProduto = substr($dataValidadeProduto, 0, 4);
                     }
                 }
                 //Validação do campo categoria
                 //Utiliza a função empty() para verificar se o campo está vazio
-                if(empty($_POST["categoria"])){
+                if(empty($_POST["categoriaProduto"])){
                     echo "<div class='alert alert-warning text-center'>O campo <strong>CATEGORIA</strong> é obrigatório!</div>";
                     $erroPreenchimento = true;
                 }
                 else{
                     //Armazena valor do formulário na variável
-                    $categoria = filtrar_entrada($_POST["categoria"]);
+                    $categoriaProduto = filtrar_entrada($_POST["categoriaProduto"]);
+                }
+
+                if(empty($_POST["quantidadeProduto"])){
+                    echo "<div class='alert alert-warning text-center'>O campo <strong>QUANTIDADE</strong> é obrigatório!</div>";
+                    $erroPreenchimento = true;
+                }
+                else{
+                    //Armazena valor do formulário na variável
+                    $quantidadeProduto = filtrar_entrada($_POST["quantidadeProduto"]);
                 }
 
                 //Início da validação da url
                 $diretorio    = "img/"; //Define para qual diretório as imagens serão movidas
-                $url  = $diretorio . basename($_FILES['url']['name']); //img/joaozinho.jpg
-                $tipoDaImagem = strtolower(pathinfo($url, PATHINFO_EXTENSION)); //Pega o tipo do arquivo em letras minúsculas
+                $fotoProduto  = $diretorio . basename($_FILES['fotoProduto']['name']); //img/joaozinho.jpg
+                $tipoDaImagem = strtolower(pathinfo($fotoProduto, PATHINFO_EXTENSION)); //Pega o tipo do arquivo em letras minúsculas
                 $erroUpload   = false; //Variável para controle do upload da foto
 
                 //Verifica se o tamanho do arquivo é DIFERENTE DE ZERO
@@ -89,7 +98,7 @@
                     }
 
                     //Verifica se a imagem foi movida para o diretório IMG, utilizando a função move_uploaded_file
-                    if(!move_uploaded_file($_FILES['fotoProduto']['tmp_name'], $url)){
+                    if(!move_uploaded_file($_FILES['fotoProduto']['tmp_name'], $fotoProduto)){
                         echo "<div class='alert alert-danger text-center'>Erro ao tentar mover a <strong>FOTO</strong> para o diretório $diretorio!</div>";
                         $erroUpload = true;
                     }
@@ -104,7 +113,7 @@
                 if(!$erroPreenchimento && !$erroUpload){
 
                     //Cria uma variável para armazenar a QUERY para realizar a inserção dos dados do produto na tabela Produtos
-                    $inserirProduto = "INSERT INTO Produtos (url, nome, descricao, categorias, data_validade, quantidade) VALUES ('$url', '$nome', '$descricao', '$categoria', '$dataValidade', '$quantidade')";
+                    $inserirProduto = "INSERT INTO Produtos (url, nome, descricao, categorias, data_validade, quantidade) VALUES ('$fotoProduto', '$nomeProduto', '$descricaoProduto', '$categoriaProduto', '$dataValidadeProduto', '$quantidadeProduto')";
 
                     //Inclui o arquivo de conexão com o Banco de Dados
                     include("conexaoBD.php");
@@ -116,28 +125,28 @@
                         echo "
                             <div class='container mt-3'>
                                 <div class='container mt-3 text-center'>
-                                    <img src='$url' style='width:150px;' title='Foto de $nome'>
+                                    <img src='$fotoProduto' style='width:150px;' title='Foto de $nomeProduto'>
                                 </div>
                                 <table class='table'>
                                     <tr>
                                         <th>NOME</th>
-                                        <td>$nome</td>
+                                        <td>$nomeProduto</td>
                                     </tr>
                                     <tr>
                                         <th>DESCRIÇÃO DO PRODUTO</th>
-                                        <td>$descricao</td>
+                                        <td>$descricaoProduto</td>
                                     </tr>
                                     <tr>
                                         <th>DATA DE VALIDADE DO PRODUTO</th>
-                                        <td>$dataValidade</td>
+                                        <td>$dataValidadeProduto</td>
                                     </tr>
                                     <tr>
                                         <th>CATEGORIA DO PRODUTO</th>
-                                        <td>$categoria</td>
+                                        <td>$categoriaProduto</td>
                                     </tr>
                                     <tr>
                                         <th>QUANTIDADE DO PRODUTO</th>
-                                        <td>$quantidade</td>
+                                        <td>$quantidadeProduto</td>
                                     </tr>
                                     
                                     
