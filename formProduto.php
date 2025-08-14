@@ -6,7 +6,7 @@
     <div class="d-flex justify-content-center mb-3">
         <div class="row">
             <div class="col-12">
-                <form action="actionProduto.php" method="POST" class="was-validated" enctype="multipart/form-data">
+                <form action="actionProduto.php?pagina=formProduto" method="POST" class="was-validated" enctype="multipart/form-data">
                     <div class="form-floating mb-3 mt-3">
                         <input type="file" class="form-control" id="fotoProduto" name="fotoProduto" required>
                         <label for="fotoProduto">Foto</label>
@@ -25,8 +25,8 @@
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback"></div>
                     </div>
-                    <div class="form-floating mt-3 mb-3">
-                        <input type="text" class="form-control" id="dataValidadeProduto" placeholder="Data de Validade do Produto" name="dataValidadeProduto" required>
+                    <div class="form-floating mb-3 mt-3">
+                        <input type="date" class="form-control" id="dataValidadeProduto" placeholder="Data de Validade do Produto:" name="dataValidadeProduto" required>
                         <label for="dataValidadeProduto">Data de Validade do Produto:</label>
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback"></div>
