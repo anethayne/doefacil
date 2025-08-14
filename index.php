@@ -84,8 +84,9 @@
                 $fotoProduto      = $registro['fotoProduto'];
                 $nomeProduto      = $registro['nomeProduto'];
                 $descricaoProduto = $registro['descricaoProduto'];
-                $valorProduto     = $registro['valorProduto'];
-                $statusProduto    = $registro['statusProduto'];
+                $dataValidadeProduto     = $registro['dataValidadeProduto'];
+                $categoriaProduto    = $registro['categoriaProduto'];
+                $quantidadeProduto    = $registro['quantidadeProduto'];
 
                 echo "
                     <div class='col-sm-3'>
