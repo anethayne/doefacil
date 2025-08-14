@@ -40,8 +40,8 @@
 
     <body>
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container px-4 px-lg-5">
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #8b0000;">
+            <div class="container px-4 px-lg-5 text-light">
                 <a class="navbar-brand" href="index.php">
                     <img src="img/logodoefacil.png" style="width:70px;" title="Retornar para a Página Inicial">
                 </a>
