@@ -8,97 +8,89 @@
             //Verifica o método de requisição do servidor
             if($_SERVER["REQUEST_METHOD"] == "POST"){
                 //Bloco para declaração de variáveis
-                $fotoProduto = $nomeProduto = $descricaoProduto = $categoriasProduto = $dataValidadeProduto = $quantidadeProduto = "";
+                $data = $status = $cidade = $bairro = $rua = $estado = $numeroEstabelecimento = "";
 
                 //Variável booleana para controle de erros de preenchimento
                 $erroPreenchimento = false;
 
                 
 
-                //Validação do campo nome
+                //Validação do campo status
                 //Utiliza a função empty() para verificar se o campo está vazio
-                if(empty($_POST["nome"])){
-                    echo "<div class='alert alert-warning text-center'>O campo <strong>NOME</strong> é obrigatório!</div>";
+                if(empty($_POST["status"])){
+                    echo "<div class='alert alert-warning text-center'>O campo <strong>STATUS</strong> é obrigatório!</div>";
                     $erroPreenchimento = true;
                 }
                 else{
                     //Armazena valor do formulário na variável
-                    $nomeProduto = filtrar_entrada($_POST["nomeProduto"]);
+                    $status = filtrar_entrada($_POST["status"]);
                 }
 
-                //Validação do campo descricao
+                //Validação do campo cidade
                 //Utiliza a função empty() para verificar se o campo está vazio
-                if(empty($_POST["descricao"])){
-                    echo "<div class='alert alert-warning text-center'>O campo <strong>DESCRIÇÃO</strong> é obrigatório!</div>";
+                if(empty($_POST["cidade"])){
+                    echo "<div class='alert alert-warning text-center'>O campo <strong>CIDADE</strong> é obrigatório!</div>";
                     $erroPreenchimento = true;
                 }
                 else{
                     //Armazena valor do formulário na variável
-                    $descricao = filtrar_entrada($_POST["descricao"]);
+                    $cidade = filtrar_entrada($_POST["cidade"]);
                 }
 
-                //Validação do campo dataValidade
+                //Validação do campo data
                 //Utiliza a função empty() para verificar se o campo está vazio
-                if(empty($_POST["dataValidade"])){
-                    echo "<div class='alert alert-warning text-center'>O campo <strong>DATA DE VALIDADE</strong> é obrigatório!</div>";
+                if(empty($_POST["data"])){
+                    echo "<div class='alert alert-warning text-center'>O campo <strong>DATA</strong> é obrigatório!</div>";
                     $erroPreenchimento = true;
                 }
                 else{
                     //Armazena valor do formulário na variável
-                    $dataValidade = filtrar_entrada($_POST["dataValidade"]);
+                    $data = filtrar_entrada($_POST["data"]);
 
-                    //Aplicar a função strlen() para verificar o comprimento da string da dataValidade
-                    if(strlen($dataValidade) == 10){
+                    //Aplicar a função strlen() para verificar o comprimento da string da data
+                    if(strlen($data) == 10){
 
-                        //Aplicar a função substr() para gerar substrings para armazenar dia, mês e ano da validade do produto
-                        $diaValidadeProduto = substr($dataValidade, 8, 2);
-                        $mesValidadeProduto = substr($dataValidade, 5, 2);
-                        $anoValidadeProduto = substr($dataValidade, 0, 4);
+                        //Aplicar a função substr() para gerar substrings para armazenar dia, mês e ano da doação
+                        $diaDoacao = substr($data, 8, 2);
+                        $mesDoacao = substr($data, 5, 2);
+                        $anoDoacao = substr($data, 0, 4);
                     }
                 }
-                //Validação do campo categoria
+                //Validação do campo cidade
                 //Utiliza a função empty() para verificar se o campo está vazio
-                if(empty($_POST["categoria"])){
-                    echo "<div class='alert alert-warning text-center'>O campo <strong>CATEGORIA</strong> é obrigatório!</div>";
+                if(empty($_POST["cidade"])){
+                    echo "<div class='alert alert-warning text-center'>O campo <strong>CIDADE</strong> é obrigatório!</div>";
                     $erroPreenchimento = true;
                 }
                 else{
                     //Armazena valor do formulário na variável
-                    $categoria = filtrar_entrada($_POST["categoria"]);
+                    $cidade = filtrar_entrada($_POST["cidade"]);
                 }
 
-                //Início da validação da url
-                $diretorio    = "img/"; //Define para qual diretório as imagens serão movidas
-                $url  = $diretorio . basename($_FILES['url']['name']); //img/joaozinho.jpg
-                $tipoDaImagem = strtolower(pathinfo($url, PATHINFO_EXTENSION)); //Pega o tipo do arquivo em letras minúsculas
-                $erroUpload   = false; //Variável para controle do upload da foto
-
-                //Verifica se o tamanho do arquivo é DIFERENTE DE ZERO
-                if($_FILES['fotoProduto']['size'] != 0){
-
-                    //Verifica se o tamanho do arquivo é maior do que 5 MegaBytes (MB) - Medida em Bytes
-                    if($_FILES['fotoProduto']['size'] > 5000000){
-                        echo "<div class='alert alert-warning text-center'>A <strong>FOTO</strong> deve ter tamanho máximo de 5MB!</div>";
-                        $erroUpload = true;
-                    }
-
-                    //Verifica se a foto está nos formatos JPG, JPEG, PNG ou WEBP
-                    if($tipoDaImagem != "jpg" && $tipoDaImagem != "jpeg" && $tipoDaImagem != "png" && $tipoDaImagem != "webp"){
-                        echo "<div class='alert alert-warning text-center'>A <strong>FOTO</strong> deve estar nos formatos JPG, JPEG, PNG ou WEBP</div>";
-                        $erroUpload = true;
-                    }
-
-                    //Verifica se a imagem foi movida para o diretório IMG, utilizando a função move_uploaded_file
-                    if(!move_uploaded_file($_FILES['fotoProduto']['tmp_name'], $url)){
-                        echo "<div class='alert alert-danger text-center'>Erro ao tentar mover a <strong>FOTO</strong> para o diretório $diretorio!</div>";
-                        $erroUpload = true;
-                    }
-
+                //Validação do campo bairro
+                //Utiliza a função empty() para verificar se o campo está vazio
+                if(empty($_POST["bairro"])){
+                    echo "<div class='alert alert-warning text-center'>O campo <strong>BAIRRO</strong> é obrigatório!</div>";
+                    $erroPreenchimento = true;
                 }
                 else{
-                    echo "<div class='alert alert-warning text-center'>O campo <strong>FOTO</strong> é obrigatório!</div>";
-                    $erroUpload = true;
+                    //Armazena valor do formulário na variável
+                    $bairro = filtrar_entrada($_POST["bairro"]);
                 }
+
+                //Validação do campo estado
+                //Utiliza a função empty() para verificar se o campo está vazio
+                if(empty($_POST["estado"])){
+                    echo "<div class='alert alert-warning text-center'>O campo <strong>ESTADO</strong> é obrigatório!</div>";
+                    $erroPreenchimento = true;
+                }
+                else{
+                    //Armazena valor do formulário na variável
+                    $estado = filtrar_entrada($_POST["estado"]);
+                }
+
+
+
 
                 //Se não houver erro de preenchimento, exibe alerta de sucesso e uma tabela com os dados informados
                 if(!$erroPreenchimento && !$erroUpload){
