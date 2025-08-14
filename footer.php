@@ -1,5 +1,5 @@
 <!-- Footer-->
-        <footer class="py-5 fixed-bottom" style="background-color: #8b0000;>
+        <footer class="py-5 fixed-bottom" style="background-color: #b95b5bff;>
             <div class="container"><p class="m-0 text-center text-light">Sistema Web</p></div>
         </footer>
         <!-- Bootstrap core JS-->
