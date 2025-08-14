@@ -1,7 +1,7 @@
 <!-- Inclui o header.php -->
 <?php include "header.php" ?>
 
-    <div class="container mt-3 mb-3">
+    <div class="container text-center mb-3 mt-3" style="padding-top:100px; padding-bottom:100px;">
 
         <?php
 

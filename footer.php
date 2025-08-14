@@ -1,10 +1,11 @@
-        <!-- Final do Container para abrigar os conteúdos das páginas do sistema -->
-        </div>
-
-        <!-- Container para abrigar o rodapé do sistema -->
-        <div class="container-fluid text-center text-light p-2 fixed-bottom" style="background-color: #DA2A26;">
-            Sistema desenvolvido nas aulas de Programação Web I e Banco de Dados do IFPR Telêmaco Borba
-        </div>  
+<!-- Footer-->
+        <footer class="py-5 bg-dark fixed-bottom">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
 
     </body>
 </html>
