@@ -44,6 +44,18 @@
                         <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-floating mt-3 mb-3">
+                            <select class="form-select" id="categoriaProduto" name="categoriaProduto" required>
+                                <option value="doces">Doces</option>
+                                <option value="bebidas">Bebidas</option>
+                                <option value="frutas">Frutas</option>
+                                <option value="verduras">Verduras</option>
+                                <option value="saldados" selected>Salgados</option>
+                            </select>
+                        <label for= "categoriaProduto">Categoria do Produto:</label>
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="form-floating mt-3 mb-3">
                         <input type="text" class="form-control" id="quantidadeProduto" placeholder="Quantidade do Produto" name="quantidadeProduto" required>
                         <label for="quantidadeProduto">Quantidade do Produto:</label>
                         <div class="valid-feedback"></div>
