@@ -74,10 +74,10 @@
                     }
                 }
 
-                //Validação do campo cidadeUsuario
+                //Validação do campo enderecoUsuario
                 //Utiliza a função empty() para verificar se o campo está vazio
                 if(empty($_POST["enderecoUsuario"])){
-                    echo "<div class='alert alert-warning text-center'>O campo <strong>CIDADE</strong> é obrigatório!</div>";
+                    echo "<div class='alert alert-warning text-center'>O campo <strong>ENDEREÇO</strong> é obrigatório!</div>";
                     $erroPreenchimento = true;
                 }
                 else{

@@ -2,25 +2,12 @@
 
 <div class="container text-center mb-3 mt-3" style="padding-top:100px; padding-bottom:100px;">
 
-    <h2>Cadastro de Usuário:</h2>
+    <h2>Cadastro de Doações:</h2>
     <div class="d-flex justify-content-center mb-3">
         <div class="row">
             <div class="col-12">
                 <form action="actionUsuario.php?pagina=formUsuario" method="POST" class="was-validated" enctype="multipart/form-data">
-                    <div class="form-floating mb-3 mt-3">
-                        <input type="file" class="form-control" id="fotoUsuario" name="fotoUsuario" required>
-                        <label for="fotoUsuario">Foto</label>
-                        <div class="valid-feedback"></div>
-                        <div class="invalid-feedback"></div>
-                    </div>
-
                     
-                    <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="cpfUsuario" placeholder="CPF" name="cpfUsuario" required>
-                        <label for="cpfUsuario">CPF</label>
-                        <div class="valid-feedback"></div>
-                        <div class="invalid-feedback"></div>
-                    </div>
 
                     <div class="form-floating mb-3 mt-3">
                         <input type="text" class="form-control" id="nomeUsuario" placeholder="Nome" name="nomeUsuario" required>
@@ -29,39 +16,35 @@
                         <div class="invalid-feedback"></div>
                     </div>
 
+                    
                     <div class="form-floating mb-3 mt-3">
-                        <input type="date" class="form-control" id="dataNascimentoUsuario" placeholder="Data de Nascimento" name="dataNascimentoUsuario" required>
-                        <label for="dataNascimentoUsuario">Data de Nascimento</label>
-                        <div class="valid-feedback"></div>
-                        <div class="invalid-feedback"></div>
-                    </div>
-                    <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="telefoneUsuario" placeholder="Telefone" name="telefoneUsuario" required>
-                        <label for="telefoneUsuario">Telefone</label>
-                        <div class="valid-feedback"></div>
-                        <div class="invalid-feedback"></div>
-                    </div>
-                    <div class="form-floating mb-3 mt-3">
-                        <input type="email" class="form-control" id="emailUsuario" placeholder="Email" name="emailUsuario" required>
-                        <label for="emailUsuario">Email</label>
-                        <div class="valid-feedback"></div>
-                        <div class="invalid-feedback"></div>
-                    </div>
-                     <div class="form-floating mt-3 mb-3">
-                        <input type="text" class="form-control" id="enderecoUsuario" placeholder="Endereco" name="enderecoUsuario" required>
-                        <label for="enderecoUsuario">Endereço</label>
+                        <input type="text" class="form-control" id="bairroUsuario" placeholder="Bairro" name="bairroUsuario" required>
+                        <label for="bairroUsuario">Bairro</label>
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-floating mt-3 mb-3">
-                        <input type="password" class="form-control" id="senhaUsuario" placeholder="Senha" name="senhaUsuario" required>
-                        <label for="senhaUsuario">Senha</label>
+                            <select class="form-select" id="cidade" name="cidade" required>
+                                <option value="telemacaBorba">Telêmaco Borba</option>
+                                <option value="imbau">Imbaú</option>
+                                <option value="curitiba">Curitiba</option>
+                                <option value="ortigueira">Ortigueira</option>
+                                <option value="londrina" selected>Londrina</option>
+                            </select>
+                        <label for= "cidade">Cidade:</label>
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback"></div>
                     </div>
+
                     <div class="form-floating mt-3 mb-3">
-                        <input type="password" class="form-control" id="confirmarSenhaUsuario" placeholder="Confirme a Senha" name="confirmarSenhaUsuario" required>
-                        <label for="confirmarSenhaUsuario">Confirme a Senha</label>
+                            <select class="form-select" id="estado" name="estado" required>
+                                <option value="parana">Paraná</option>
+                                <option value="saoPaulo">São Paulo</option>
+                                <option value="rioDeJaneiro">Rio de Janeiro</option>
+                                <option value="minasGerais">Minas Gerais</option>
+                                <option value="rioGrandeDoSul" selected>Rio Grande do Sul</option>
+                            </select>
+                        <label for= "estado">Estado:</label>
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback"></div>
                     </div>
