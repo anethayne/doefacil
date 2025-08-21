@@ -112,8 +112,10 @@
                 //Se não houver erro de preenchimento, exibe alerta de sucesso e uma tabela com os dados informados
                 if(!$erroPreenchimento && !$erroUpload){
 
+                    $idDoacao = $_POST['idDoacao'];
+
                     //Cria uma variável para armazenar a QUERY para realizar a inserção dos dados do produto na tabela Produtos
-                    $inserirProduto = "INSERT INTO Produtos (url, nome, descricao, categorias, data_validade, quantidade) VALUES ('$fotoProduto', '$nomeProduto', '$descricaoProduto', '$categoriaProduto', '$dataValidadeProduto', '$quantidadeProduto')";
+                    $inserirProduto = "INSERT INTO Produtos (url, nome, descricao, categorias, data_validade, quantidade, id_doacao) VALUES ('$fotoProduto', '$nomeProduto', '$descricaoProduto', '$categoriaProduto', '$dataValidadeProduto', '$quantidadeProduto', '$idDoacao')";
 
                     //Inclui o arquivo de conexão com o Banco de Dados
                     include("conexaoBD.php");

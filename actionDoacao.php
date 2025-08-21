@@ -105,63 +105,56 @@
 
 
                 //Se não houver erro de preenchimento, exibe alerta de sucesso e uma tabela com os dados informados
-                if(!$erroPreenchimento && !$erroUpload){
+                if(!$erroPreenchimento){
 
-                    //Cria uma variável para armazenar a QUERY para realizar a inserção dos dados do produto na tabela doacao
-                    $inserirProduto = "INSERT INTO doacao (data, estado, cidade, rua, bairro, numeroEstabelecimento) 
-                    VALUES ('$data', '$estado', '$cidade', '$rua', '$bairro', '$numeroEstabelecimento')";
-
-                    //Inclui o arquivo de conexão com o Banco de Dados
+                    //Inclui conexão
                     include("conexaoBD.php");
 
-                    //Se conseguir executar a query para inserção, exibe alerta de sucesso e a tabela com os dados informados
-                    if(mysqli_query($conn, $inserirProduto)){
+                    //Query para inserir a doação
+                    $inserirDoacao = "INSERT INTO doacao (data, estado, cidade, rua, bairro, numero_estabelecimento, status) 
+                                    VALUES ('$data', '$estado', '$cidade', '$rua', '$bairro', '$numeroEstabelecimento', 'disponivel')";
 
-                        echo "<div class='alert alert-success text-center'><strong>Produto</strong> cadastrado(a) com sucesso!</div>";
+                    if(mysqli_query($conn, $inserirDoacao)){
+
+                        //Pega o ID da doação recém-criada
+                        $idDoacao = mysqli_insert_id($conn);
+
+                        echo "<div class='alert alert-success text-center'>
+                                <strong>Doação</strong> cadastrada com sucesso!
+                            </div>";
+
                         echo "
                             <div class='container mt-3'>
                                 <table class='table'>
-                                    <tr>
-                                        <th>DATA</th>
-                                        <td>$data</td>
-                                    </tr>
-                                    <tr>
-                                        <th>ESTADO</th>
-                                        <td>$estado</td>
-                                    </tr>
-                                    <tr>
-                                        <th>RUA</th>
-                                        <td>$rua</td>
-                                    </tr>
-                                    <tr>
-                                        <th>BAIRRO</th>
-                                        <td>$bairro</td>
-                                    </tr>
-                                    <tr>
-                                        <th>CIDADE</th>
-                                        <td>$cidade</td>
-                                    </tr>
-                                    <tr>
-                                        <th>CIDADE</th>
-                                        <td>$cidade</td>
-                                    </tr>
-                                    <tr>
-                                        <th>NUMERO DO ESTABELECIMENTO</th>
-                                        <td>$numeroEstabelecimento</td>
-                                    </tr>
+                                    <tr><th>DATA</th><td>$data</td></tr>
+                                    <tr><th>ESTADO</th><td>$estado</td></tr>
+                                    <tr><th>RUA</th><td>$rua</td></tr>
+                                    <tr><th>BAIRRO</th><td>$bairro</td></tr>
+                                    <tr><th>CIDADE</th><td>$cidade</td></tr>
+                                    <tr><th>NÚMERO DO ESTABELECIMENTO</th><td>$numeroEstabelecimento</td></tr>
                                 </table>
                             </div>
                         ";
-                        mysqli_close($conn); //Essa função encerra a conexão com o Banco de Dados
-                    }
-                    else{
-                        echo "<div class='alert alert-danger text-center'>Erro ao tentar cadastrar <strong>Produto</strong> no Banco de Dados $database!</div>" . mysqli_error($conn);
+
+                        mysqli_close($conn);
+
+                        // Redireciona para formProduto.php já com o ID da doação selecionado
+                        echo "<script>
+                                alert('Agora você pode cadastrar produtos relacionados a esta doação.');
+                                window.location.href = 'formProduto.php?idDoacao=$idDoacao';
+                            </script>";
+
+                    } else {
+                        echo "<div class='alert alert-danger text-center'>
+                                Erro ao tentar cadastrar a <strong>Doação</strong> no Banco de Dados: " . mysqli_error($conn) . "
+                            </div>";
                     }
                 }
+
             }
             else{
                 //Redireciona o usuário para o formProduto.php
-                header("location:formProduto.php");
+                header("location:formDoacao.php");
             }
 
             //Função para filtrar entrada de dados
