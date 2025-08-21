@@ -10,12 +10,18 @@
                     
 
                     <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="nomeUsuario" placeholder="Nome" name="nomeUsuario" required>
-                        <label for="nomeUsuario">Nome Completo</label>
+                        <input type="date" class="form-control" id="data" placeholder="Data" name="data" required>
+                        <label for="data">Data</label>
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback"></div>
                     </div>
 
+                    <div class="form-floating mb-3 mt-3">
+                        <input type="text" class="form-control" id="rua" placeholder="Rua" name="rua" required>
+                        <label for="rua">Rua</label>
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback"></div>
+                    </div>
                     
                     <div class="form-floating mb-3 mt-3">
                         <input type="text" class="form-control" id="bairroUsuario" placeholder="Bairro" name="bairroUsuario" required>
@@ -23,6 +29,7 @@
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback"></div>
                     </div>
+
                     <div class="form-floating mt-3 mb-3">
                             <select class="form-select" id="cidade" name="cidade" required>
                                 <option value="telemacaBorba">Telêmaco Borba</option>
@@ -48,6 +55,15 @@
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback"></div>
                     </div>
+
+                    <div class="form-floating mb-3 mt-3">
+                        <input type="text" class="form-control" id="numeroEstabelecimento" placeholder="Número do Estabelecimento" name="numeroEstabelecimento" required>
+                        <label for="numeroEstabelecimento">Número do Estabelecimento: </label>
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+
                     <button type="submit" class="btn btn-success">Cadastrar</button>
                 </form>
             </div>
