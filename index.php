@@ -73,7 +73,7 @@
                 $imagens = explode(",", $url);
 
                 echo "
-                    <div class='col-sm-4 mb-4'>
+                    <div class='col-sm-3 mb-3'>
                         <div class='card h-100'>
 
                             <!-- Carrossel de imagens -->
