@@ -1,43 +1,46 @@
 <?php
-
     include("conexaoBD.php");
-    session_start(); //Iniciar uma sessão
+    session_start(); // Iniciar uma sessão
 
+    // Verifica se os campos foram preenchidos
+    if (empty($_POST['emailUsuario']) || empty($_POST['senhaUsuario'])) {
+        header('location:formLogin.php?erroLogin=dadosInvalidos');
+        exit();
+    }
+
+    // Filtra os dados de entrada
     $emailUsuario = mysqli_real_escape_string($conn, $_POST['emailUsuario']);
-    $senhaUsuario = mysqli_real_escape_string($conn, $_POST['senhaUsuario']);
-    $quantidadeLogin = 0; //Inicia a variável que contabilizará a quantidade de logins encontrados
+    $senhaDigitada = $_POST['senhaUsuario'];
+    $quantidadeLogin = 0;
 
-    $buscarLogin = "SELECT * 
-                    FROM Usuarios
-                    WHERE emailUsuario = '{$emailUsuario}'
-                    AND senhaUsuario = md5('{$senhaUsuario}')
-                    ";
+    // Corrige o nome da tabela para "usuario" (sem 's')
+    $buscarLogin = "SELECT * FROM usuario WHERE email = '{$emailUsuario}'";
 
     $efetuarLogin = mysqli_query($conn, $buscarLogin);
 
+    if ($registro = mysqli_fetch_assoc($efetuarLogin)) {
+        // Verifica a senha usando password_verify()
+        if (password_verify($senhaDigitada, $registro['senha'])) {
+            $quantidadeLogin = 1;
 
-    if($registro = mysqli_fetch_assoc($efetuarLogin)){
-        $quantidadeLogin = mysqli_num_rows($efetuarLogin);
-        
-        //Cria variáveis PHP para armazenar registros encontrados pela QUERY
-        $idUsuario = $registro['idUsuario'];
-        $tipoUsuario = $registro['tipoUsuario'];
-        $emailUsuario = $registro['emailUsuario'];
-        $senhaUsuario = $registro['senhaUsuario'];
+            // Cria variáveis PHP a partir dos dados encontrados
+            $idUsuario    = $registro['idUsuario'];
+            $tipoUsuario  = $registro['tipoUsuario'];
+            $emailUsuario = $registro['emailUsuario'];
 
-        //Cria variáveis de SESSÃO para armazenar registros das vriáveis PHP
-        $_SESSION['idUsuario'] = $idUsuario;
-        $_SESSION['tipoUsuario'] = $tipoUsuario;
-        $_SESSION['emailUsuario'] = $emailUsuario;
-        $_SESSION['senhaUsuario'] = $senhaUsuario;
-        
-        $_SESSION['logado'] = true; //Variável de controle de sessão
+            // Define variáveis de sessão
+            $_SESSION['idUsuario'] = $idUsuario;
+            $_SESSION['tipoUsuario'] = $tipoUsuario;
+            $_SESSION['emailUsuario'] = $emailUsuario;
+            $_SESSION['logado'] = true;
 
-        header('location:index.php'); //Redireciona para a página inicial
-    }
-    elseif(empty($_POST['emailUsuario']) || empty($_POST['senhaUsuario']) || $quantidadeLogin == 0){
-        header('location:formLogin.php?erroLogin=dadosInvalidos');
+            // Redireciona para a página inicial
+            header('location:index.php');
+            exit();
+        }
     }
 
-
+    // Se não encontrar ou senha inválida
+    header('location:formLogin.php?erroLogin=dadosInvalidos');
+    exit();
 ?>
