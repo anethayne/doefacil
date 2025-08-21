@@ -24,8 +24,8 @@
                     </div>
                     
                     <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="bairroUsuario" placeholder="Bairro" name="bairroUsuario" required>
-                        <label for="bairroUsuario">Bairro</label>
+                        <input type="text" class="form-control" id="bairro" placeholder="Bairro" name="bairro" required>
+                        <label for="bairro">Bairro</label>
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback"></div>
                     </div>

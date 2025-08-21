@@ -8,23 +8,13 @@
             //Verifica o método de requisição do servidor
             if($_SERVER["REQUEST_METHOD"] == "POST"){
                 //Bloco para declaração de variáveis
-                $data = $status = $cidade = $bairro = $rua = $estado = $numeroEstabelecimento = "";
+                $data = $cidade = $bairro = $rua = $estado = $numeroEstabelecimento = "";
 
                 //Variável booleana para controle de erros de preenchimento
                 $erroPreenchimento = false;
 
-                
 
-                //Validação do campo status
-                //Utiliza a função empty() para verificar se o campo está vazio
-                if(empty($_POST["status"])){
-                    echo "<div class='alert alert-warning text-center'>O campo <strong>STATUS</strong> é obrigatório!</div>";
-                    $erroPreenchimento = true;
-                }
-                else{
-                    //Armazena valor do formulário na variável
-                    $status = filtrar_entrada($_POST["status"]);
-                }
+
 
                 //Validação do campo cidade
                 //Utiliza a função empty() para verificar se o campo está vazio
@@ -118,7 +108,8 @@
                 if(!$erroPreenchimento && !$erroUpload){
 
                     //Cria uma variável para armazenar a QUERY para realizar a inserção dos dados do produto na tabela doacao
-                    $inserirProduto = "INSERT INTO doacao (data, estado, cidade, rua, bairro, numero_estabelecimento) VALUES ('$data', '$estado', '$cidade', '$rua', '$bairro', '$numeroEstabelecimento')";
+                    $inserirProduto = "INSERT INTO doacao (data, estado, cidade, rua, bairro, numeroEstabelecimento) 
+                    VALUES ('$data', '$estado', '$cidade', '$rua', '$bairro', '$numeroEstabelecimento')";
 
                     //Inclui o arquivo de conexão com o Banco de Dados
                     include("conexaoBD.php");
