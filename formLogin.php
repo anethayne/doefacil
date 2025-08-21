@@ -1,6 +1,6 @@
 <?php include "header.php" ?>
 
-<div class="container text-center mb-3 mt-3" style="padding-top:100px; padding-bottom:100px;">
+<div class="container text-center mb-3 mt-3" style="padding-top:150px; padding-bottom:150px;">
 
     <?php
         //Verifica se há algum parâmetro chamado 'erroLogin' sendo recebido por GET

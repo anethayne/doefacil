@@ -1,6 +1,6 @@
 <?php include "header.php" ?>
 
-<div class="container text-center mb-3 mt-3" style="padding-top:100px; padding-bottom:100px;">
+<div class="container text-center mb-3 mt-3" style="padding-top:50px; padding-bottom:100px;">
 
     <h2>Cadastro de Doações:</h2>
     <div class="d-flex justify-content-center mb-3">
@@ -64,7 +64,7 @@
                     </div>
 
 
-                    <button type="submit" class="btn btn-success">Cadastrar</button>
+                    <a href="formProduto.php" class="btn btn-success">Próximo >></a>
                 </form>
             </div>
         </div>
