@@ -3,130 +3,77 @@
 <div class='container mt-5 mb-5'>
 
     <?php
-
-        //Inclui o arquivo de conexão com o Banco de Dados
         include "conexaoBD.php";
 
-        //Variável PHP que recebe a Query para selecionar todos os campos da tabela Produtos
-        $listarProdutos = "SELECT * FROM Produtos";
+        //Seleciona as doações
+        $listarDoacoes = "SELECT * FROM Produtos"; 
 
-        //Verificar se há algum parâmetro chamado filtroProduto sendo recebido por GET
-        if(isset($_GET['filtroProduto'])){
-            //Se houver valor setado no GET chamado 'filtroProduto', armazena na variável $
-            $filtroProduto = $_GET['filtroProduto'];
+        $res = mysqli_query($conn, $listarDoacoes);
+        $totalDoacoes = mysqli_num_rows($res);
 
-            //Se o filtro for diferente de 'todos', concatena a filtragem
-            if($filtroProduto != 'todos'){
-                $listarProdutos = $listarProdutos . " WHERE statusProduto LIKE '$filtroProduto' ";
-            }
-
-            switch($filtroProduto){
-                case "todos" : $mensagemFiltro = "no total";
-                break;
-
-                case "disponivel" : $mensagemFiltro = "disponíveis";
-                break;
-
-                case "esgotado" : $mensagemFiltro = "esgotados";
-                break;
-            }
-
+        if($totalDoacoes > 0){
+            echo "<div class='alert alert-info text-center'>Há <strong>$totalDoacoes</strong> doações cadastradas!</div>";
         }
         else{
-            $filtroProduto = "todos";
-            $mensagemFiltro = "no total";
+            echo "<div class='alert alert-info text-center'>Não há doações cadastradas no sistema!</div>";
         }
-
-        $res            = mysqli_query($conn, $listarProdutos); //Recebe true OR false com base na execução
-        $totalProdutos  = mysqli_num_rows($res); //Retorna a quantidade de registros encontrados
-
-        if($totalProdutos > 0){
-            if($totalProdutos == 1){
-                //Se o total de produtos for igual a um, exibe mensagem no singular
-                echo "<div class='alert alert-info text-center'>Há <strong>$totalProdutos</strong> produto $mensagemFiltro cadastrado!</div>";
-            }
-            else{
-                //Se o total de produtos não for igual a um, exibe mensagem no plural
-                echo "<div class='alert alert-info text-center'>Há <strong>$totalProdutos</strong> produtos $mensagemFiltro cadastrados!</div>";
-            }
-        }
-        else{
-            echo "<div class='alert alert-info text-center'>Não há Produtos cadastrados no sistema!</div>";
-        }
-
-        echo "
-            <form name='formFiltro' action='index.php' method='GET'>
-                <div class='form-floating mt-3'>
-                    <select class='form-select' name='filtroProduto' required>
-                        <option value='todos'"; if($filtroProduto == 'todos'){echo "selected";} echo">Exibir todos os Produtos</option>
-                        <option value='disponivel'"; if($filtroProduto == 'disponivel'){echo "selected";} echo">Exibir apenas Produtos disponíveis</option>
-                        <option value='esgotado'"; if($filtroProduto == 'esgotado'){echo "selected";} echo">Exibir apenas Produtos esgotados</option>
-                    </select>
-                    <label for='filtroProduto'>Selecione um Filtro</label>
-                    <br>
-                </div>
-                <button type='submit' class='btn btn-outline-success' style='float:right'><i class='bi bi-funnel'></i> Filtrar Produtos</button>
-                <br>
-            </form>
-        ";
-
     ?>
 
     <hr>
 
-    <!-- Exibe a grid com os cards -->
+    <!-- Grid com os cards -->
     <div class="row">
 
         <?php
-            //Loop para armazenar os registros da tabela em variáveis PHP
             while($registro = mysqli_fetch_assoc($res)){
-                $idProduto        = $registro['idProduto'];
-                $fotoProduto      = $registro['fotoProduto'];
-                $nomeProduto      = $registro['nomeProduto'];
-                $descricaoProduto = $registro['descricaoProduto'];
-                $dataValidadeProduto     = $registro['dataValidadeProduto'];
-                $categoriaProduto    = $registro['categoriaProduto'];
-                $quantidadeProduto    = $registro['quantidadeProduto'];
+                $id        = $registro['id_produtos'];
+                $urls      = $registro['url']; // Pode conter 1 ou várias imagens separadas por vírgula
+                $nome      = $registro['nome'];
+                $descricao = $registro['descricao'];
+                $categoria = $registro['categorias'];
+                $validade  = $registro['data_validade'];
+                $quant     = $registro['quantidade'];
+
+                // transforma em array (caso venha "img1.jpg,img2.jpg,img3.jpg")
+                $imagens = explode(",", $urls);
 
                 echo "
-                    <div class='col-sm-3'>
+                    <div class='col-sm-4 mb-4'>
+                        <div class='card h-100'>
 
-                        <div class='card' style='width:100%; height:100%'>
-
-                            <div class='card-body' style='height:100%'>
-                                <a href='visualizarProduto.php?idProduto=$idProduto' style='text-decoration:none' title='Visualizar mais detalhes de $nomeProduto'>
-                                    <div class='position-relative'> ";
-                                        if($statusProduto == 'esgotado'){
-                                            echo "
-                                                <div class='position-absolute top-50 start-50 translate-middle bg-danger text-white px-4 py-2 fs-6 fw-bold rounded shadow' style='z-index: 10; opacity: 0.85;'>
-                                                    ESGOTADO
-                                                </div>
-                                            ";
-                                        }
+                            <!-- Carousel de imagens -->
+                            <div id='carousel$id' class='carousel slide' data-bs-ride='carousel'>
+                                <div class='carousel-inner'>";
+                                    foreach($imagens as $index => $img){
+                                        $active = ($index == 0) ? "active" : "";
                                         echo "
-                                            <img class='card-img-top' src='$fotoProduto' alt='Foto de $nomeProduto' ";
-                                                if($statusProduto == 'esgotado'){
-                                                    echo "style='filter:grayscale(100%)' ";
-                                                }
-                                            echo ">
-                                    </div>
+                                            <div class='carousel-item $active'>
+                                                <img src='$img' class='d-block w-100' style='height:250px;object-fit:cover;' alt='Imagem da doação $nome'>
+                                            </div>
+                                        ";
+                                    }
+                                echo "</div>
+                                <button class='carousel-control-prev' type='button' data-bs-target='#carousel$id' data-bs-slide='prev'>
+                                    <span class='carousel-control-prev-icon'></span>
+                                </button>
+                                <button class='carousel-control-next' type='button' data-bs-target='#carousel$id' data-bs-slide='next'>
+                                    <span class='carousel-control-next-icon'></span>
+                                </button>
+                            </div>
+
+                            <!-- Infos da doação -->
+                            <div class='card-body text-center'>
+                                <h5 class='card-title'>$nome</h5>
+                                <p class='card-text'>$descricao</p>
+                                <p><strong>Categoria:</strong> $categoria</p>
+                                <p><strong>Validade:</strong> $validade</p>
+                                <p><strong>Quantidade:</strong> $quant</p>
+                                <a class='btn btn-outline-primary' href='visualizarDoacao.php?id=$id'>
+                                    <i class='bi bi-eye'></i> Ver detalhes
                                 </a>
                             </div>
-
-                            <div class='card-body text-center'>
-                                <h4 class='card-title'>$nomeProduto</h4>
-                                <p class='card-text'>Valor: <strong>R$ $valorProduto</strong>
-                                <div class='d-grid' style='border-size:border-box'>
-                                    <a class='btn btn-outline-success' href='visualizarProduto.php?idProduto=$idProduto' style='text-decoration:none' title='Visualizar mais detalhes de $nomeProduto'>
-                                        <i class='bi bi-eye'></i> Visualizar Produto
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div> 
-
+                        </div>
                     </div>
-
                 ";
             }
         ?>
@@ -134,5 +81,6 @@
     </div>
 
 </div>
+
 
 <?php include "footer.php" ?>
