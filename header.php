@@ -41,7 +41,7 @@
     <body>
 
         <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #b95b5bff;">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #b95b5bff;">
         <div class="container px-4 px-lg-5">
 
             <!-- Logo e slogan lado a lado -->
@@ -62,7 +62,7 @@
             <!-- Itens de navegação -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="formDoacao.php">Efetuar Doação</a></li>
                     <li class="nav-item"><a class="nav-link" href="formLogin.php">Login</a></li>
                 </ul>
