@@ -6,7 +6,7 @@
     <div class="d-flex justify-content-center mb-3">
         <div class="row">
             <div class="col-12">
-                <form action="actionUsuario.php?pagina=formUsuario" method="POST" class="was-validated" enctype="multipart/form-data">
+                <form action="actionDoacao.php?pagina=formDoacao" method="POST" class="was-validated" enctype="multipart/form-data">
                     
 
                     <div class="form-floating mb-3 mt-3">
