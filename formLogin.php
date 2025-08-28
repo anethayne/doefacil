@@ -1,55 +1,55 @@
-<?php include "header.php" ?>
+<?php include "header.php"; ?>
 
-<div class="container text-center mb-3 mt-3" style="padding-top:150px; padding-bottom:150px;">
+<div class="d-flex justify-content-center mt-5 mb-5">
+    <div class="d-flex" style="max-width: 450px; width: 100%; background-color: #f8f9fa; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
 
-    <?php
-        //Verifica se há algum parâmetro chamado 'erroLogin' sendo recebido por GET
-        if(isset($_GET['erroLogin'])){
-            $erroLogin = $_GET['erroLogin'];
+        <!-- Faixa Laranja lateral -->
+        <div style="width: 10px; background-color: orange; border-top-left-radius: 12px; border-bottom-left-radius: 12px;"></div>
 
-            if($erroLogin == 'dadosInvalidos'){
-                echo "<div class='alert alert-warning text-center'><strong>USUÁRIO ou SENHA</strong> inválidos!</div>";
-            }
-            if($erroLogin == 'naoLogado'){
-                
-                echo "<div class='alert alert-warning text-center'><strong>USUÁRIO</strong> não logado!</div>";
-            }
-            if($erroLogin == 'acessoProibido'){
-                //Redireciona para a página inicial
-                header('location:index.php');
-            }
-        }
-    ?>
+        <!-- Formulário -->
+        <div class="container p-4 text-center">
+            <?php
+                if(isset($_GET['erroLogin'])){
+                    $erroLogin = $_GET['erroLogin'];
+                    if($erroLogin == 'dadosInvalidos'){
+                        echo "<div class='alert alert-warning text-center'><strong>USUÁRIO ou SENHA</strong> inválidos!</div>";
+                    }
+                    if($erroLogin == 'naoLogado'){
+                        echo "<div class='alert alert-warning text-center'><strong>USUÁRIO</strong> não logado!</div>";
+                    }
+                    if($erroLogin == 'acessoProibido'){
+                        header('location:index.php');
+                    }
+                }
+            ?>
 
-    <h2>Acessar o Sistema:</h2>
-    <div class="d-flex justify-content-center mb-3">
-        <div class="row">
-            <div class="col-12">
-                <form action="actionLogin.php" method="POST" class="was-validated">
-                    <div class="form-floating mb-3 mt-3">
-                        <input type="email" class="form-control" id="emailUsuario" placeholder="Email" name="emailUsuario" required>
-                        <label for="emailUsuario">Email</label>
-                        <div class="valid-feedback"></div>
-                        <div class="invalid-feedback"></div>
-                    </div>
-                    <div class="form-floating mt-3 mb-3">
-                        <input type="password" class="form-control" id="senhaUsuario" placeholder="Senha" name="senhaUsuario" required>
-                        <label for="senhaUsuario">Senha</label>
-                        <div class="valid-feedback"></div>
-                        <div class="invalid-feedback"></div>
-                    </div>
-                    <button type="submit" class="btn btn-success">Login</button>
-                </form>
-            </div>
+            <h2 class="mb-4">Acessar o Sistema</h2>
+            <form action="actionLogin.php" method="POST" class="was-validated">
+
+                <!-- Email -->
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="emailUsuario" name="emailUsuario" placeholder="Email" required>
+                    <label for="emailUsuario">Email</label>
+                    <div class="invalid-feedback">Informe seu email</div>
+                </div>
+
+                <!-- Senha -->
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="senhaUsuario" name="senhaUsuario" placeholder="Senha" required>
+                    <label for="senhaUsuario">Senha</label>
+                    <div class="invalid-feedback">Informe sua senha</div>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100">Login</button>
+            </form>
+
+            <p class="mt-3 mb-0">
+                Ainda não possui cadastro? 
+                <a href="formUsuario.php" title="Cadastrar-se">Clique aqui!</a> 
+                &nbsp;<i class="bi bi-emoji-smile"></i>
+            </p>
         </div>
     </div>
-
-    <br>
-
-    <p>
-        Ainda não possui cadastro? <a href="formUsuario.php" title="Cadastrar-se">Clique aqui!</a>&nbsp<i class="bi bi-emoji-smile"></i>
-    </p>
-
 </div>
 
-<?php include "footer.php" ?>
+<?php include "footer.php"; ?>
