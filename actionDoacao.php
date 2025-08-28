@@ -111,7 +111,7 @@
                     include("conexaoBD.php");
 
                     //Query para inserir a doação
-                    $inserirDoacao = "INSERT INTO doacao (data, estado, cidade, rua, bairro, numero_estabelecimento, status) 
+                    $inserirDoacao = "INSERT INTO doacao (data, estado, cidade, rua, bairro, numero_estabelecimento, statusDoacao) 
                                     VALUES ('$data', '$estado', '$cidade', '$rua', '$bairro', '$numeroEstabelecimento', 'disponivel')";
 
                     if(mysqli_query($conn, $inserirDoacao)){

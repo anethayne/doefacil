@@ -40,8 +40,12 @@
 
     <body>
 
+    <?php
+        session_start();
+    ?>
+
         <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #597060ff;">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #b95b5bff;">
         <div class="container px-4 px-lg-5">
 
             <!-- Logo e slogan lado a lado -->
@@ -63,17 +67,27 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="index.php">Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="formDoacao.php">Efetuar Doação</a></li>
-                    <li class="nav-item"><a class="nav-link" href="formLogin.php">Login</a></li>
+
+                    <?php
+                        if(isset($_SESSION['logado']) && $_SESSION['logado'] === true){
+                            echo "
+                                <li class='nav-item'><a class='nav-link' href='formDoacao.php'>Efetuar Doação</a></li>
+                            ";
+                        }
+                        if(isset($_SESSION['logado']) && $_SESSION['logado'] === true){
+                            echo "
+                                <li class='nav-item'><a class='nav-link' href='logout.php'>Sair</a></li>
+                            ";
+                        }
+                        else{
+                            echo "
+                                <li class='nav-item'><a class='nav-link' href='formLogin.php'>Login</a></li>
+                            ";
+                        }
+                    ?>
+                    </a></li>
                 </ul>
 
-                <p>
-                    <?php
-                        session_start();
-                        $nomeUsuario = $_SESSION["nomeUsuario"];
-                        echo "Bem vindo(a), $nomeUsuario!";
-                    ?>
-                </p>
                 <!-- Botão do carrinho -->
                 <form class="d-flex">
                     <button class="btn btn-outline-light" type="submit">
@@ -82,6 +96,22 @@
                         <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                     </button>
                 </form>
+
+                <?php
+                    if(isset($_SESSION['logado']) && $_SESSION['logado'] === true){
+                        $nomeUsuario = $_SESSION['nomeUsuario'];
+                        echo "
+                            <ul class='navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4'>
+                                <li class='nav-item'>
+                                    <a class='nav-link' aria-current='page' href='#'>
+                                     Bem-vindo(a), $nomeUsuario! <i class='bi bi-smile'></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        ";
+                    }
+                ?>
+                
             </div>
         </div>
     </nav>

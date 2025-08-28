@@ -66,8 +66,12 @@
                 $nome        = $registro['nome'];
                 $descricao   = $registro['descricao'];
                 $categoria   = $registro['categorias'];
-                $dataVal     = $registro['data_validade'];
+                $dataValidade = $registro['data_validade'];
                 $quantidade  = $registro['quantidade'];
+
+                $diaValidade = substr($dataValidade, 8, 2);
+                $mesValidade = substr($dataValidade, 5, 2);
+                $anoValidade = substr($dataValidade, 0, 4);
 
                 // transforma em array se tiver várias imagens separadas por vírgula
                 $imagens = explode(",", $url);
@@ -100,7 +104,7 @@
                                 <h4 class='card-title'>$nome</h4>
                                 <p class='card-text'>$descricao</p>
                                 <p class='card-text'><strong>Categoria:</strong> $categoria</p>
-                                <p class='card-text'><strong>Validade:</strong> $dataVal</p>
+                                <p class='card-text'><strong>Validade:</strong> $diaValidade/$mesValidade/$anoValidade</p>
                                 <p class='card-text'><strong>Quantidade:</strong> $quantidade</p>
                                 <div class='d-grid'>
                                     <a class='btn btn-outline-success' href='visualizarProduto.php?idProduto=$idProduto'>

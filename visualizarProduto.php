@@ -26,6 +26,10 @@
                     $dataValidade = $registro['data_validade'];
                     $quantidade   = $registro['quantidade'];
 
+                    $diaValidade = substr($dataValidade, 8, 2);
+                    $mesValidade = substr($dataValidade, 5, 2);
+                    $anoValidade = substr($dataValidade, 0, 4);
+
                     //Transforma URLs em array para o carrossel
                     $imagens = explode(",", $urls);
                     ?>
@@ -62,7 +66,7 @@
                                 <h4 class="card-title"><b><?php echo $nomeProduto?></b></h4>
                                 <p class="card-text"><?php echo $descricao?></p>
                                 <p class="card-text"><b>Categoria:</b> <?php echo $categoria?></p>
-                                <p class="card-text"><b>Validade:</b> <?php echo $dataValidade?></p>
+                                <p class="card-text"><b>Validade:</b> <?php echo "$diaValidade/$mesValidade/$anoValidade"?></p>
                                 <p class="card-text"><b>Quantidade:</b> <?php echo $quantidade?></p>
 
                                 <div class="card bg-light mt-3">

@@ -1,5 +1,5 @@
 <!-- Footer-->
-        <footer class="py-2 fixed-bottom" style="background-color: #556b2f; height: 50px;">
+        <footer class="py-2 fixed-bottom" style="background-color: #b95b5b; height: 50px;">
             <div class="container"><p class="m-1 text-center text-light">Sistema Web desenvolvido por Ane, Amanda e Estefany - IFPR Campus Telêmaco Borba</p></div>
         </footer>
         <!-- Bootstrap core JS-->
