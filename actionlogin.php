@@ -27,11 +27,13 @@
             $idUsuario    = $registro['idUsuario'];
             $tipoUsuario  = $registro['tipoUsuario'];
             $emailUsuario = $registro['emailUsuario'];
+            $nomeUsuario  = $registro['nome'];
 
             // Define variáveis de sessão
             $_SESSION['idUsuario'] = $idUsuario;
             $_SESSION['tipoUsuario'] = $tipoUsuario;
             $_SESSION['emailUsuario'] = $emailUsuario;
+            $_SESSION['nomeUsuario'] = $nomeUsuario;
             $_SESSION['logado'] = true;
 
             // Redireciona para a página inicial

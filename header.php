@@ -67,6 +67,13 @@
                     <li class="nav-item"><a class="nav-link" href="formLogin.php">Login</a></li>
                 </ul>
 
+                <p>
+                    <?php
+                        session_start();
+                        $nomeUsuario = $_SESSION["nomeUsuario"];
+                        echo "Bem vindo(a), $nomeUsuario!";
+                    ?>
+                </p>
                 <!-- Botão do carrinho -->
                 <form class="d-flex">
                     <button class="btn btn-outline-light" type="submit">
