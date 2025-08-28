@@ -42,7 +42,11 @@
 
         <!-- Navigation -->
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #597060ff;">
+=======
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #556b2f;">
+>>>>>>> Stashed changes
 =======
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #556b2f;">
 >>>>>>> Stashed changes
