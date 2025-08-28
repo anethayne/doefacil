@@ -41,7 +41,11 @@
     <body>
 
         <!-- Navigation -->
+<<<<<<< Updated upstream
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #597060ff;">
+=======
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #556b2f;">
+>>>>>>> Stashed changes
         <div class="container px-4 px-lg-5">
 
             <!-- Logo e slogan lado a lado -->
