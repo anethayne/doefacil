@@ -8,7 +8,7 @@
         exit();
     }
 
-    // Filtra os dados de entrada
+    // Filtra os dados de entrada!
     $emailUsuario = mysqli_real_escape_string($conn, $_POST['emailUsuario']);
     $senhaDigitada = $_POST['senhaUsuario'];
     $quantidadeLogin = 0;
@@ -27,13 +27,13 @@
             $idUsuario    = $registro['idUsuario'];
             $tipoUsuario  = $registro['tipoUsuario'];
             $emailUsuario = $registro['emailUsuario'];
-            $nomeUsuario  = $registro['nome'];
+            $nomeUsuario = $registro['nome'];
 
             // Define variáveis de sessão
             $_SESSION['idUsuario'] = $idUsuario;
             $_SESSION['tipoUsuario'] = $tipoUsuario;
             $_SESSION['emailUsuario'] = $emailUsuario;
-            $_SESSION['nomeUsuario'] = $nomeUsuario;
+            $_SESSION['nomeUsuario'] = $nomeUsuario; 
             $_SESSION['logado'] = true;
 
             // Redireciona para a página inicial
