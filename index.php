@@ -7,23 +7,22 @@
 
         $listarDoacoes = "SELECT * FROM Produtos"; // ainda usa a mesma tabela
 
-        if(isset($_GET['filtroProduto'])){
-            $filtroProduto = $_GET['filtroProduto'];
+    if(isset($_GET['filtroProduto'])){
+        $filtroProduto = $_GET['filtroProduto'];
 
-            if($filtroProduto != 'todos'){
-                $listarDoacoes .= " WHERE statusProduto LIKE '$filtroProduto' ";
-            }
+        if($filtroProduto != 'todos'){
+            $listarDoacoes .= " WHERE categorias = '$filtroProduto' ";
+        }
 
-            switch($filtroProduto){
-                case "todos" : $mensagemFiltro = "no total";
-                break;
-
-                case "disponivel" : $mensagemFiltro = "disponíveis";
-                break;
-
-                case "esgotado" : $mensagemFiltro = "esgotados";
-                break;
-            }
+        switch($filtroProduto){
+            case "todos" : $mensagemFiltro = "no total"; break;
+            case "doces" : $mensagemFiltro = "de Doces"; break;
+            case "bebidas" : $mensagemFiltro = "de Bebidas"; break;
+            case "frutas" : $mensagemFiltro = "de Frutas"; break;
+            case "verduras" : $mensagemFiltro = "de Verduras"; break;
+            case "salgados" : $mensagemFiltro = "de Salgados"; break;
+            default: $mensagemFiltro = "da categoria selecionada";
+        }
 
         } else {
             $filtroProduto = "todos";
@@ -44,13 +43,18 @@
                 <div class='form-floating mt-3'>
                     <select class='form-select' name='filtroProduto' required>
                         <option value='todos'"; if($filtroProduto == 'todos'){echo "selected";} echo">Exibir todas as Doações</option>
-                        <option value='disponivel'"; if($filtroProduto == 'disponivel'){echo "selected";} echo">Exibir apenas Doações disponíveis</option>
-                        <option value='esgotado'"; if($filtroProduto == 'esgotado'){echo "selected";} echo">Exibir apenas Doações esgotadas</option>
+                        <option value='doces'"; if($filtroProduto == 'doces'){echo "selected";} echo">Doces</option>
+                        <option value='bebidas'"; if($filtroProduto == 'bebidas'){echo "selected";} echo">Bebidas</option>
+                        <option value='frutas'"; if($filtroProduto == 'frutas'){echo "selected";} echo">Frutas</option>
+                        <option value='verduras'"; if($filtroProduto == 'verduras'){echo "selected";} echo">Verduras</option>
+                        <option value='salgados'"; if($filtroProduto == 'salgados'){echo "selected";} echo">Salgados</option>
                     </select>
-                    <label for='filtroProduto'>Selecione um Filtro</label>
+                    <label for='filtroProduto'>Selecione uma Categoria</label>
                     <br>
                 </div>
-                <button type='submit' class='btn btn-outline-success' style='float:right'><i class='bi bi-funnel'></i> Filtrar</button>
+                <button type='submit' class='btn btn-outline-success' style='float:right'>
+                    <i class='bi bi-funnel'></i> Filtrar
+                </button>
                 <br>
             </form>
         ";

@@ -45,7 +45,7 @@
     ?>
 
         <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #345c2aff;">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #d58300;">
         <div class="container px-4 px-lg-5">
 
             <!-- Logo e slogan lado a lado -->
