@@ -1,31 +1,31 @@
 <?php include "header.php"; ?>
 
 <div class="d-flex justify-content-center mt-5 mb-5">
-    <div class="d-flex" style="max-width: 520px; width: 100%; background-color: #f8f9fa; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <div class="d-flex" style="max-width: 450px; width: 100%; background-color: #f8f9fa; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
 
         <!-- Faixa Laranja lateral -->
         <div style="width: 10px; background-color: orange; border-top-left-radius: 12px; border-bottom-left-radius: 12px;"></div>
 
         <!-- Formulário -->
-        <div class="container p-4">
+        <div class="container p-4 text-center">
             <h2 class="mb-4">Cadastrar Produto</h2>
             <form action="actionProduto.php?pagina=formProduto" method="POST" class="was-validated" enctype="multipart/form-data">
 
-                <!-- Foto do Produto -->
+                <!-- Foto -->
                 <div class="form-floating mb-3">
                     <input type="file" class="form-control" id="fotoProduto" name="fotoProduto" required>
-                    <label for="fotoProduto">Foto do Produto</label>
+                    <label for="fotoProduto">Foto</label>
                 </div>
 
-                <!-- Nome do Produto -->
+                <!-- Nome -->
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="nomeProduto" name="nomeProduto" placeholder="Ex: Bolo de Chocolate" required>
+                    <input type="text" class="form-control" id="nomeProduto" placeholder="Nome" name="nomeProduto" required>
                     <label for="nomeProduto">Nome do Produto</label>
                 </div>
 
-                <!-- Descrição do Produto -->
+                <!-- Descrição -->
                 <div class="form-floating mb-3">
-                    <textarea class="form-control" id="descricaoProduto" name="descricaoProduto" placeholder="Informe uma breve descrição sobre o produto" required></textarea>
+                    <textarea class="form-control" id="descricaoProduto" placeholder="Descrição do produto" name="descricaoProduto" required></textarea>
                     <label for="descricaoProduto">Descrição do Produto</label>
                 </div>
 
@@ -35,42 +35,40 @@
                     <label for="dataValidadeProduto">Data de Validade</label>
                 </div>
 
-                <!-- Categoria do Produto -->
+                <!-- Categoria -->
                 <div class="form-floating mb-3">
                     <select class="form-select" id="categoriaProduto" name="categoriaProduto" required>
-                        <option value="" selected disabled>Selecione a categoria</option>
                         <option value="doces">Doces</option>
                         <option value="bebidas">Bebidas</option>
                         <option value="frutas">Frutas</option>
                         <option value="verduras">Verduras</option>
-                        <option value="salgados">Salgados</option>
+                        <option value="salgados" selected>Salgados</option>
                     </select>
-                    <label for="categoriaProduto">Categoria do Produto</label>
+                    <label for="categoriaProduto">Categoria</label>
                 </div>
 
-                <!-- Unidade de Medida -->
+                <!-- Unidade -->
                 <div class="form-floating mb-3">
                     <select class="form-select" id="unidadeProduto" name="unidadeProduto" required>
-                        <option value="" selected disabled>Selecione a unidade</option>
                         <option value="kg">Quilogramas (KG)</option>
-                        <option value="gramas">Gramas (g)</option>
                         <option value="ml">Mililitros (ml)</option>
                         <option value="litros">Litros (L)</option>
-                        <option value="nenhuma">Nenhuma</option>
+                        <option value="gramas">Gramas (g)</option>
+                        <option value="nenhuma" selected>Nenhuma</option>
                     </select>
                     <label for="unidadeProduto">Unidade de Medida</label>
                 </div>
 
-                <!-- Quantidade -->
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="quantidadeProduto" name="quantidadeProduto" placeholder="Ex: 10" min="1" required>
-                    <label for="quantidadeProduto">Quantidade</label>
-                </div>
+                 <!-- Campo Quantidade -->
+                    <div class="form-floating mt-3 mb-3">
+                        <input type="text" class="form-control" id="quantidadeProduto" name="quantidadeProduto" placeholder="Quantidade do Produto" required>
+                        <label for="quantidadeProduto">Quantidade do Produto:</label>
+                    </div>
 
-                <!-- Doação Relacionada -->
-                <div class="form-floating mb-4">
+                <!-- Doação relacionada -->
+                <div class="form-floating mb-3">
                     <select class="form-select" id="idDoacao" name="idDoacao" required>
-                        <option value="" selected disabled>Selecione a doação</option>
+                        <option value="">Selecione a Doação</option>
                         <?php
                             include "conexaoBD.php";
                             $queryDoacoes = "SELECT id_doacao, data, cidade FROM doacao WHERE status='disponivel'";
@@ -83,7 +81,6 @@
                     <label for="idDoacao">Doação Relacionada</label>
                 </div>
 
-                <!-- Botão Cadastrar -->
                 <button type="submit" class="btn btn-success w-100">Cadastrar Produto</button>
             </form>
         </div>
